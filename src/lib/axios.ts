@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = {
     createCard: async (card: {title: string,  image: string}) => {

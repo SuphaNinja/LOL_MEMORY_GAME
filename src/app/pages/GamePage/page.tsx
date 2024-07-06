@@ -99,7 +99,7 @@ export default function Page() {
             } else if (data.players[0].points === 5 &&  data.players[1].points === 5) {
                 toast({
                     variant: "default",
-                    title: `It's a draw!`,
+                    title: `It&apos;s a draw!`,
                     description: "Game will close in 5 seconds!"
                 });
             };
@@ -216,7 +216,7 @@ export default function Page() {
                     <div className="flex flex-col mx-auto justify-center items-center">
                     {gameSession.status === "active" && <p>Time Left: {timer && timer +"s"}</p>}
                         <p className="text-2xl mx-auto font-bold text-center">
-                            {gameSession.currentTurn % 2 === 0 ? gameSession?.players[0]?.name : gameSession?.players[1]?.name}'s turn!
+                                {gameSession.currentTurn % 2 === 0 ? gameSession?.players[0]?.name : gameSession?.players[1]?.name}&apos;s turn!
                         </p>
                     </div>
                 </div>
