@@ -34,12 +34,12 @@ export default function Card({ card, clickedCard, setClickedCard, gameSession, c
         };
 
         if (gameSession.players[0].userId === currentPlayerId && gameSession.currentTurn % 2 !== 0) {
-            toast({ variant: "destructive", title: "Wait", description: "It's not your turn!" });
+            toast({ variant: "destructive", title: "Wait", description: "It&apos;s not your turn!" });
             return;
         };
 
         if (gameSession.players[1].userId === currentPlayerId && gameSession.currentTurn % 2 === 0) {
-            toast({ variant: "destructive", title: "Wait", description: "It's not your turn!" });
+            toast({ variant: "destructive", title: "Wait", description: "It&apos;s not your turn!" });
             return;
         };
         
