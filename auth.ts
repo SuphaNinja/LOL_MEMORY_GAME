@@ -9,6 +9,7 @@ import { User } from "@prisma/client";
 
 
 const config = {
+    secret: process.env.AUTH_SECRET,
     adapter: PrismaAdapter(prisma),
     session: {
         strategy: "jwt"
