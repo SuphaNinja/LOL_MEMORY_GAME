@@ -1,6 +1,6 @@
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import  GitHub from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -14,7 +14,7 @@ const config = {
         strategy: "jwt"
     },
     providers: [
-        GitHubProvider({
+        GitHub({
             clientId: process.env.AUTH_GITHUB_ID,
             clientSecret: process.env.AUTH_GITHUB_SECRET
         })
