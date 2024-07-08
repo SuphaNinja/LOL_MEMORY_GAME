@@ -9,9 +9,7 @@ const app = express();
 const api = express.Router();
 
 app.use(
-    cors({
-        origin: ["http://localhost:3000"],
-    })
+    cors()
 );
 app.use("/api", api);
 app.use(express.json());
