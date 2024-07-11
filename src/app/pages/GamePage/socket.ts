@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-const socket = io("https://165.227.160.156",  );
+const socket = io("https://league.exploreit.nu",  );
 
 export default socket;
 
