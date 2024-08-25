@@ -132,33 +132,37 @@ export default function Page() {
             <div className="flex w-full flex-col gap-4 justify-center">
               <h2 className="md:text-3xl text-xl underline text-center font-semibold ">Leaderboard</h2>
               {allUsers.isSuccess &&
-                <div className="flex w-full flex-col gap-4 justify-center">
-                  {sortedUsers.map((user:any, index:number) => (
-                  <div key={index} className="grid md:w-2/3 mx-auto grid-cols-6 gap-2 p-2 border items-center justify-center rounded-md">
-                    <div className="col-span-2 border-r pr-4 h-20 w-full flex items-center justify-center ">
-                      <p className="text-2xl mr-4">{index + 1}.</p>
-                      <img src={user.image} className="size-full object-cover rounded-full" />
+              <div className="flex flex-col gap-4 sm:max-h-[80vh] justify-center">
+                <div className="w-full sm:overflow-y-auto">
+                  {sortedUsers.map((user: any, index: number) => (
+                    <div key={index} className="grid md:w-2/3 mx-auto grid-cols-6 gap-2 p-2 border items-center justify-center rounded-md">
+                      <div className="col-span-2 border-r pr-4 h-20 w-full flex items-center justify-center">
+                        <p className="text-2xl mr-4">{index + 1}.</p>
+                        <img src={user.image} className="size-full object-cover rounded-full" />
+                      </div>
+                      <div className="flex flex-col justify-center gap-2 col-span-2 h-20 w-full">
+                        <p className="font-semibold text-lg">{user.name}</p>
+                        <p>Total Points: <span className="font-bold text-lg">{getTotalPoints(user)}</span></p>
+                      </div>
+                      <div className="col-span-2 h-20 flex items-center justify-center w-full">
+                        {currentUser.isSuccess ? (
+                          <>
+                            {currentUser.data.id !== user.id ? (
+                              <Button onClick={() => followUserFunction(user, currentUser.data.id)}>
+                                {isFollowing ? "Unfollow" : "Follow"}
+                              </Button>
+                            ) : (
+                              <p className="text-lg font-semibold">( You )</p>
+                            )}
+                          </>
+                        ) : (
+                          <Button onClick={() => signIn("github")}>Log in!</Button>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex flex-col justify-center gap-2 col-span-2 h-20 w-full">
-                      <p className="font-semibold text-lg">{user.name}</p>
-                      <p>Total Points: <span className="font-bold text-lg">{getTotalPoints(user)}</span></p>
-                    </div>
-                    <div className="col-span-2 h-20 flex items-center justify-center w-full">
-                      {currentUser.isSuccess ?
-                        <>
-                          {currentUser.data.id !== user.id ?
-                              <Button onClick={() => followUserFunction(user, currentUser.data.id)}>{isFollowing ? "follow": "unfollow"}</Button>
-                            :
-                            <p className="text-lg font-semibold">( You )</p>
-                          }
-                        </>
-                        :
-                        <Button onClick={() => signIn("github")}>Log in to follow user!</Button>
-                      }
-                    </div>
-                  </div>
                   ))}
                 </div>
+              </div>
               }
             </div>
         </div>
@@ -193,7 +197,7 @@ export default function Page() {
               ))}
             </div>
             :
-            <p>Added friends will show up here</p>
+            <p className="text-center">Added friends will show up here</p>
           }
         </div>
       </div>
